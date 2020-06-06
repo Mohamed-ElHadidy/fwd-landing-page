@@ -82,14 +82,18 @@ window.addEventListener('scroll', (e) => {
             }
         })
 
-        // remove our active class from all sections 
-        for (let section of sections) {
-            section.classList.remove("your-active-class")
+        // check if our active class is already in it's classList
+        if (activeSection.classList.contains("your-active-class")) {
+            return
+        } else {
+            // remove our active class from all sections 
+            for (let section of sections) {
+                section.classList.remove("your-active-class")
+            }
+            // add our active class to only our active section
+            activeSection.classList.add("your-active-class") 
         }
-        // add our active class to only our active section
-        activeSection.classList.add("your-active-class")
-
-        console.dir(activeSection);
+            console.dir(activeSection);
 
     }
 })
