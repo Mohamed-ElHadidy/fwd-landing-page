@@ -22,7 +22,9 @@ const ul = document.getElementById('navbar__list');
 
 console.log(sections);
 console.dir(ul);
-
+// get our sections pageYOffset values here
+const sectionsOffsetTopVAL = [];
+let activeSection;
 /**
  * End Global Variables
  * Start Helper Functions
@@ -45,14 +47,12 @@ const buildNav = () => {
         console.log(li);
 
         ul.innerHTML += `<li><a href="#">${li}</a></li>`;
-
+        // get our sections pageYOffset values 
+        sectionsOffsetTopVAL.push(section.offsetTop);
     }
 }
 
 buildNav();
-
-
-// Add class 'active' to section when near top of viewport
 
 
 // Scroll to anchor ID using scrollTO event
@@ -63,6 +63,38 @@ buildNav();
  * Begin Events
  * 
  */
+
+// track the window YOffset to detect the active section 
+
+window.addEventListener('scroll', (e) => {
+
+    // check if we reached the first section 
+    if ( sectionsOffsetTopVAL && window.pageYOffset >= sectionsOffsetTopVAL[0] ) {
+       
+        console.dir(window.pageYOffset);
+        // loop through just our sections pageYOffset values to detect the active section
+        sectionsOffsetTopVAL.map((value, index) => {
+            if ( value  <= window.pageYOffset ) {
+                console.dir(e.target);
+                console.dir(sections[index]);
+                // define our active section to add our active class to it
+                activeSection = sections[index];
+            }
+        })
+
+        // remove our active class from all sections 
+        for ( let section of sections) {
+            section.classList.remove("your-active-class") 
+        }
+        // add our active class to only our active section
+        activeSection.classList.add("your-active-class")
+
+        console.dir(activeSection);
+    
+    }
+})
+
+
 
 // Build menu 
 
