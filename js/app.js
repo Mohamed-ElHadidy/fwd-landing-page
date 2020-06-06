@@ -41,12 +41,12 @@ let activeSection;
 
 // build the nav
 const buildNav = () => {
-     for (let section of sections) {
+    for (let section of sections) {
 
         let li = section.attributes['data-nav'].nodeValue;
         console.log(li);
 
-        ul.innerHTML += `<li><a href="#">${li}</a></li>`;
+        ul.innerHTML += `<li>${li}</li>`;
         // get our sections pageYOffset values 
         sectionsOffsetTopVAL.push(section.offsetTop);
     }
@@ -69,12 +69,12 @@ buildNav();
 window.addEventListener('scroll', (e) => {
 
     // check if we reached the first section 
-    if ( sectionsOffsetTopVAL && window.pageYOffset >= sectionsOffsetTopVAL[0] ) {
-       
+    if (sectionsOffsetTopVAL && window.pageYOffset >= sectionsOffsetTopVAL[0]) {
+
         console.dir(window.pageYOffset);
         // loop through just our sections pageYOffset values to detect the active section
         sectionsOffsetTopVAL.map((value, index) => {
-            if ( value  <= window.pageYOffset ) {
+            if (value <= window.pageYOffset) {
                 console.dir(e.target);
                 console.dir(sections[index]);
                 // define our active section to add our active class to it
@@ -83,14 +83,14 @@ window.addEventListener('scroll', (e) => {
         })
 
         // remove our active class from all sections 
-        for ( let section of sections) {
-            section.classList.remove("your-active-class") 
+        for (let section of sections) {
+            section.classList.remove("your-active-class")
         }
         // add our active class to only our active section
         activeSection.classList.add("your-active-class")
 
         console.dir(activeSection);
-    
+
     }
 })
 
@@ -99,5 +99,19 @@ window.addEventListener('scroll', (e) => {
 // Build menu 
 
 // Scroll to section on link click
+ul.addEventListener('click', (e) => {
+    console.dir(e.target.nodeName)
+    if (e.target.nodeName == 'LI') {
+        for (let section of sections) {
+            if (e.target.outerText == section.attributes['data-nav'].nodeValue) {
+                window.scrollTo({
+                    top: section.offsetTop,
+                    left: section.offsetLeft,
+                    behavior: 'smooth'
+                })
+            }
+        }
+    }
+})
 
 // Set sections as active
