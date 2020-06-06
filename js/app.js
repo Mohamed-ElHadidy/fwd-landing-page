@@ -46,7 +46,7 @@ const buildNav = () => {
         let li = section.attributes['data-nav'].nodeValue;
         console.log(li);
 
-        ul.innerHTML += `<li>${li}</li>`;
+        ul.innerHTML += `<li><a href="">${li}</a></li>`;
         // get our sections pageYOffset values 
         sectionsOffsetTopVAL.push(section.offsetTop);
     }
@@ -104,8 +104,10 @@ window.addEventListener('scroll', (e) => {
 
 // Scroll to section on link click
 ul.addEventListener('click', (e) => {
+    // prevent a(href) default behaviour
+    e.preventDefault();
     console.dir(e.target.nodeName)
-    if (e.target.nodeName == 'LI') {
+    if (e.target.nodeName == 'A') {
         for (let section of sections) {
             if (e.target.outerText == section.attributes['data-nav'].nodeValue) {
                 window.scrollTo({
