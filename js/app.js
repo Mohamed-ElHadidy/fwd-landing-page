@@ -21,10 +21,9 @@ const sections = document.getElementsByTagName('section');
 const ul = document.getElementById('navbar__list');
 const burgerMenu = document.querySelector('.hamburger-menu');
 const header = document.querySelector('.page__header');
-let liID = section.attributes['id'].nodeValue;
 
-console.log(sections);
-console.dir(ul);
+// console.log(sections);
+// console.dir(ul);
 // get our sections pageYOffset values here
 const sectionsOffsetTopVAL = [];
 let activeSection;
@@ -47,19 +46,14 @@ const buildNav = () => {
     for (let section of sections) {
 
         let li = section.attributes['data-nav'].nodeValue;
-        console.log(li);
-
-        ul.innerHTML += `<li><a href="#${liID}" class="menu__link">${li}</a></li>`;
+        // console.log(li);
+        ul.innerHTML += `<li><a href="" class="menu__link">${li}</a></li>`;
         // get our sections pageYOffset values 
         sectionsOffsetTopVAL.push(section.offsetTop);
     }
 }
 
 buildNav();
-
-
-// Scroll to anchor ID using scrollTO event
-
 
 /**
  * End Main Functions
@@ -96,12 +90,9 @@ window.addEventListener('scroll', (e) => {
             // add our active class to only our active section
             activeSection.classList.add("your-active-class") 
         }
-            console.dir(activeSection);
-
+            // console.dir(activeSection);
     }
 })
-
-
 
 // show side menu 
 burgerMenu.addEventListener('click', (e) => {
@@ -125,5 +116,3 @@ ul.addEventListener('click', (e) => {
         }
     }
 })
-
-// Set sections as active
