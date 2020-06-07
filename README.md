@@ -1,13 +1,47 @@
 # Landing Page Project
 
+### Future Work is Digital Initiative (FWD) - Web Development Professional Track - first project
+
+
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [Architecture](#architecture)
+* [About](#about)
+* [Requirements](#requirements)
+* [Resources](#resources)
 
-## Instructions
+## Architecture
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+```
+css
+- styles.css    
+index.html
+js
+- app.js
+README.md
+```
 
-To get started, open `js/app.js` and start building out the app's functionality
+## About
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+The HTML page consists of:
+
+*Nav bar ( dynamically created based on the sections of the page )
+
+*Main hero section
+
+*Three sections
+
+* footer
+
+
+## Requirements
+
+*Start by linking your app.js
+*Build out your HTML and at least 3 content sections ( provided in the starter code)
+*Build the navigation menu
+*Add functionality to distinguish the section in view
+*Add the functionality to scroll to sections
+
+
+## Resources
+Fira Sans font from Google Fonts.
