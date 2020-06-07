@@ -90,11 +90,52 @@ section {
 
 /* Header Styles */
 .page__header {
-    background: #fff;
+    background: #ffffff;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 5;
+}
+
+.hamburger-menu {
+    display: none;
+}
+
+@media (max-width:641px) {
+    .page__header {
+        width: 25%;
+        height: 100vh;
+        transition: ease 0.3s;
+    }
+
+    .navbar__menu ul {
+        margin-top: 40%;
+        text-align: center;
+    }
+
+    .navbar__menu li{
+        width: 100%;
+    }
+
+    .hamburger-menu {
+        display: block;
+        font-size: 30px;
+        position: fixed;
+        top: 1.5%;
+        left: 9%;
+        width: 40px;
+        background-color: #fff;
+        border-radius: 50%;
+        text-align: center;
+        cursor: pointer;
+        color: #000;
+        z-index: 5;
+    }
+
+    .slide-out {
+        transform: translateX(-100%);
+        transition: ease 0.3s;
+    }
 }
 
 /* Footer Styles */

@@ -19,6 +19,9 @@
  */
 const sections = document.getElementsByTagName('section');
 const ul = document.getElementById('navbar__list');
+const burgerMenu = document.querySelector('.hamburger-menu');
+const header = document.querySelector('.page__header');
+let liID = section.attributes['id'].nodeValue;
 
 console.log(sections);
 console.dir(ul);
@@ -46,7 +49,7 @@ const buildNav = () => {
         let li = section.attributes['data-nav'].nodeValue;
         console.log(li);
 
-        ul.innerHTML += `<li><a href="">${li}</a></li>`;
+        ul.innerHTML += `<li><a href="#${liID}" class="menu__link">${li}</a></li>`;
         // get our sections pageYOffset values 
         sectionsOffsetTopVAL.push(section.offsetTop);
     }
@@ -100,7 +103,10 @@ window.addEventListener('scroll', (e) => {
 
 
 
-// Build menu 
+// show side menu 
+burgerMenu.addEventListener('click', (e) => {
+    header.classList.toggle("slide-out");
+})
 
 // Scroll to section on link click
 ul.addEventListener('click', (e) => {
