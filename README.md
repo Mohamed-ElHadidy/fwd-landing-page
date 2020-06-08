@@ -29,15 +29,15 @@ The HTML page consists of:
 
 *Main hero section
 
-*Three sections
+*Four sections
 
-* footer
+*footer
 
 
 ## Requirements
 
 *Start by linking your app.js
-*Build out your HTML and at least 3 content sections ( provided in the starter code)
+*Build out your HTML and at least 3 content sections ( provided in the starter code) [+ added one more section]
 *Build the navigation menu
 *Add functionality to distinguish the section in view
 *Add the functionality to scroll to sections
