@@ -19,6 +19,7 @@
  */
 const sections = document.getElementsByTagName('section');
 const ul = document.getElementById('navbar__list');
+const ul_array = document.getElementById('navbar__list').childNodes;
 const burgerMenu = document.querySelector('.hamburger-menu');
 const header = document.querySelector('.page__header');
 
@@ -27,6 +28,7 @@ const header = document.querySelector('.page__header');
 // get our sections pageYOffset values here
 const sectionsOffsetTopVAL = [];
 let activeSection;
+let activeSection_idx;
 /**
  * End Global Variables
  * Start Helper Functions
@@ -51,6 +53,8 @@ const buildNav = () => {
         // get our sections pageYOffset values 
         sectionsOffsetTopVAL.push(section.offsetTop);
     }
+    // set our first li item active
+    ul.childNodes[0].classList.add('active-nav');
 }
 
 buildNav();
@@ -68,18 +72,21 @@ window.addEventListener('scroll', (e) => {
     // check if we reached the first section 
     if (sectionsOffsetTopVAL && window.pageYOffset >= sectionsOffsetTopVAL[0]) {
 
-        console.dir(window.pageYOffset);
+        //console.dir(window.pageYOffset);
         // loop through just our sections pageYOffset values to detect the active section
         sectionsOffsetTopVAL.map((value, index) => {
-            if (value <= window.pageYOffset) {
-                console.dir(e.target);
-                console.dir(sections[index]);
+            // 150 to avoid changing active class when we just hit the last few px of the section
+            if (value <= window.pageYOffset + 150) {
+                //console.dir(e.target);
+                //console.dir(sections[index]);
                 // define our active section to add our active class to it
                 activeSection = sections[index];
+                // define 
+                activeSection_idx = index;
             }
         })
 
-        // check if our active class is already in it's classList
+        // check if our active class is already in our active ssection classList
         if (activeSection.classList.contains("your-active-class")) {
             return
         } else {
@@ -87,8 +94,14 @@ window.addEventListener('scroll', (e) => {
             for (let section of sections) {
                 section.classList.remove("your-active-class")
             }
+            // remove our active class from all nav li 
+            for (let li of ul_array) {
+                li.classList.remove("active-nav")
+            }
             // add our active class to only our active section
             activeSection.classList.add("your-active-class") 
+            // add our active class to only our active nav li
+            ul_array[activeSection_idx].classList.add("active-nav")
         }
             // console.dir(activeSection);
     }
